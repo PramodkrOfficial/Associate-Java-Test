@@ -1,9 +1,29 @@
-class MostVowelsFinder {
+import java.util.Scanner;
 
-    // Method to count vowels in a given string
+class MostVowelsFinder {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter array of String words: ");
+        String n = input.nextLine();
+        String[] words = n.split(" ");
+//        String[] words = {"Sunshine", "Umbrella", "Major", "Resourceful"};
+
+        String stringMostVowels = "";
+        int maxVowelCount = 0;
+
+        for (String word : words) {
+            int vowelCount = countVowels(word);
+            if (vowelCount > maxVowelCount) {
+                maxVowelCount = vowelCount;
+                stringMostVowels = word;
+            }
+        }
+        System.out.println("String with the most vowels: " + stringMostVowels);
+    }
+
     public static int countVowels(String str) {
-        int count = 0;
-        String vowels = "aeiouAEIOU";
+        int count= 0;
+        String vowels = "aeiou";
 
         for (char ch : str.toCharArray()) {
             if (vowels.indexOf(ch) != -1) {
@@ -11,27 +31,6 @@ class MostVowelsFinder {
             }
         }
         return count;
-    }
-
-    // Main method to find the string with the most vowels
-    public static void main(String[] args) {
-
-
-        // Sample array of strings
-        String[] words = {"Sunshine", "Umbrella", "Major", "Resourceful"};
-
-        String stringWithMostVowels = "";
-        int maxVowelCount = 0;
-
-        for (String word : words) {
-            int vowelCount = countVowels(word);
-            if (vowelCount > maxVowelCount) {
-                maxVowelCount = vowelCount;
-                stringWithMostVowels = word;
-            }
-        }
-
-        System.out.println("String with the most vowels: " + stringWithMostVowels);
     }
 }
 
